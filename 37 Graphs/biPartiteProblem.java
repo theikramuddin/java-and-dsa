@@ -1,5 +1,5 @@
 import java.util.*;
-public class biPartiteProblem {
+public class BiPartiteProblem {
     static class Edge {
         int src;
         int dest;
