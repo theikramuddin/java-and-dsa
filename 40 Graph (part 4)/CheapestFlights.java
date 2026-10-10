@@ -53,8 +53,8 @@ public class CheapestFlights {
                 int v = e.dest;
                 int wt = e.wt;
 
-                if(dist[u] != Integer.MAX_VALUE && dist[u]+wt < dist[v] && curr.stops <= k) {
-                    dist[v] = dist[u]+wt;
+                if(curr.cost+wt < dist[v] && curr.stops <= k) {
+                    dist[v] = curr.cost+wt;
                     q.add(new Info(v, dist[v], curr.stops+1));
                 }
             }
