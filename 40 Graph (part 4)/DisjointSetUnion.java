@@ -11,7 +11,7 @@ public class DisjointSetUnion {
 
     public static int find(int x) {
         if(x == par[x]) return x;
-        return find(par[x]);
+        return par[x] = find(par[x]); //optimization
     }
 
     public static void union(int a, int b) {
