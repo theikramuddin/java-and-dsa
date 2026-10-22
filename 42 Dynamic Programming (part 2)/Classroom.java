@@ -39,6 +39,22 @@ public class Classroom {
         }
     }
 
+    public static int knapsackTabulation(int val[], int wt[], int w, int n) {
+        int dp[][] = new int[n+1][w+1];
+        for(int i=0; i<=n; i++) {
+            for(int j=0; j<=w; j++) {
+                if(i == 0 || j == 0) {
+                    dp[i][j] = 0;
+                } else if(wt[i-1] <= j) {
+                    dp[i][j] = Math.max(val[i-1] + dp[i-1][j-wt[i-1]], dp[i-1][j]);
+                } else {
+                    dp[i][j] = dp[i-1][j];
+                }
+            }
+        }
+        return dp[n][w];
+    }
+
     public static void main(String args[]) {
         int val[] = {15, 14, 10, 45, 30};
         int wt[] = {2, 5, 1, 3, 4};
@@ -51,6 +67,7 @@ public class Classroom {
                 dp[i][j] = -1;
             }
         }
-        System.out.println(knapsackMemo(val, wt, w, val.length, dp));
+        // System.out.println(knapsackMemo(val, wt, w, val.length, dp));
+        System.out.println(knapsackTabulation(val, wt, w, val.length));
     }
 }
